@@ -1,0 +1,144 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+
+
+.content-container {
+    display: flex;
+    background: rgb(228, 241, 245);
+    border-radius: 24px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 50px auto; /* Add margin at the top and bottom */
+    height: 70vh; /* Set a fixed height */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between text and image */
+}
+
+
+.text-container {
+    margin-right: 20px; /* Space between text and image */
+}
+
+.image-container {
+    display: flex;
+    align-items: center; /* Center the image vertically */
+}
+
+h2 {
+    font-size: 60px; /* Adjust size as needed */
+    font-weight: 900;
+    line-height: 1;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 500;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    margin: 10px 0; /* Add margin for spacing */
+    line-height: 1.5; /* Increase line height for better readability */
+}
+
+
+.button-container {
+    display: flex;
+    gap: 10px; /* Adjust spacing between buttons */
+}
+
+.register{
+    background: black;
+    color: #fff;
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-inline-start: 2rem;
+    padding-inline-end: 2rem;
+    border-radius: 16px;
+    font-weight: 600;
+    outline: transparent solid 2px;
+
+    outline-offset: 2px;
+    height: auto;
+    min-width: 2.5rem;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.login{
+    background: #fff;
+    color: #000;
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-inline-start: 2rem;
+    padding-inline-end: 2rem;
+    border-radius: 16px;
+    font-weight: 600;
+    outline: transparent solid 2px;
+    outline-offset: 2px;
+    height: auto;
+    min-width: 2.5rem;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.image-container img {
+    max-width: 100%; /* Ensures the image doesn't overflow its container */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 400px; /* Adjust this value as needed */
+    border-radius: 12px; /* Optional: for rounded corners */
+}
+
+
+
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        align-items: center; /* Center align the content */
+    }
+
+    .image-container {
+        margin-bottom: 20px; /* Add spacing between elements */
+    }
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align the content */
+        padding: 20px; /* Adjust padding */
+    }
+
+    .image-container {
+        display: none;
+    }
+
+    h2 {
+        font-size: 3rem; /* Increase font size */
+        text-align: center; /* Center the heading */
+    }
+
+    p {
+        font-size: 1.1rem; /* Increase paragraph font size */
+        text-align: center; /* Center align the paragraph */
+        margin: 10px 0; /* Add margin for spacing */
+        line-height: 1.5; /* Improve line spacing */
+        max-width: 90%; /* Limit width for better readability */
+    }
+    .button-container {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 15px; /* Space between buttons */
+        margin-top: 20px; /* Add margin to the top */
+        width: 100%; /* Full width for buttons */
+    }
+
+    .register, .login {
+        width: 100%; /* Full width for buttons */
+        font-size: 1.2rem; /* Increase button font size */
+    }
+}
