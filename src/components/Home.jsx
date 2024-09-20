@@ -10,7 +10,7 @@ const Home = () => {
                 <h2>
                     <span style={{ color: 'black' }}>PAYMENT IN</span>
                     <br />
-                    <span style={{ color: 'tomato' }}>PROGRESS</span>
+                    <span style={{ color: '#f05142' }}>PROGRESS</span>
                 </h2>
                 <p>You can still earn Plume Miles while inflight. Keep an eye<br /> on the Duty Free Area for upcoming giveaways!</p>
                 <div className="button-container">

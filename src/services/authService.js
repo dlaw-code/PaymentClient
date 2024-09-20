@@ -1,14 +1,11 @@
 import axios from 'axios';
 
-// Set your API base URL
-const API_URL = 'http://localhost:5000/api/auth'; // Example: adjust with your backend URL
+const API_URL = 'https://localhost:44304/api/auth';
 
-// Register User
 const register = (userData) => {
     return axios.post(`${API_URL}/register`, userData);
 };
 
-// Login User
 const login = (loginData) => {
     return axios.post(`${API_URL}/login`, loginData);
 };

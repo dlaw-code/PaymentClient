@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
 import authService from "../services/authService";
-import "./Register.css"; // Ensure this path is correct
+import "./Register.css";
 
 const Register = () => {
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [role, setRole] = useState(''); // Backend expects this field
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
+    // Handle registration
     const handleRegister = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            alert('Passwords do not match');
-            return;
-        }
+        setError('');
+
+        setLoading(true);
         try {
-            const response = await authService.register({ email, password });
+            // Send only the required fields to the backend
+            const response = await authService.register({ email, name, phoneNumber, password, role });
             console.log('Registration successful:', response.data);
-            // Handle the response, redirect, etc.
+            // Handle success (e.g., reset form or redirect)
+            setEmail('');
+            setName('');
+            setPhoneNumber('');
+            setPassword('');
+            setRole('');
         } catch (error) {
-            console.error('Registration error:', error.response.data);
+            setError(error.response?.data?.message || 'Registration failed. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -37,6 +49,24 @@ const Register = () => {
                         />
                     </div>
                     <div>
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Phone Number:</label>
+                        <input
+                            type="tel"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
                         <label>Password:</label>
                         <input
                             type="password"
@@ -46,15 +76,18 @@ const Register = () => {
                         />
                     </div>
                     <div>
-                        <label>Confirm Password:</label>
+                        <label>Role:</label>
                         <input
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            type="text"
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
                             required
                         />
                     </div>
-                    <button type="submit">Register</button>
+                    {error && <p className="error-message">{error}</p>}
+                    <button type="submit" disabled={loading}>
+                        {loading ? 'Registering...' : 'Register'}
+                    </button>
                 </form>
             </div>
         </div>
